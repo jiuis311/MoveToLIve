@@ -1,6 +1,6 @@
 class PlayerController {
   constructor () {
-    this.sprite = Nakama.playerGroup.create(640, 360, 'player');
+    this.sprite = Nakama.playerGroup.create(Nakama.game.scale.maxWidth/2, Nakama.game.scale.maxHeight/2, 'player');
     Nakama.game.physics.arcade.enable(this.sprite);
     this.sprite.update = this.update.bind(this);
     this.sprite.body.collideWorldBounds = true;
@@ -10,7 +10,6 @@ class PlayerController {
   }
 
   update() {
-
     var targetAngle = Nakama.game.math.angleBetween(
       this.sprite.position.x,
       this.sprite.position.y,

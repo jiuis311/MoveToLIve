@@ -1,15 +1,29 @@
 class EnemyController {
   constructor () {
-    this.sprite = Nakama.enemyGroup.create(100, 100, 'assets', 'EnemyBulletType1.png');
-    Nakama.game.physics.arcade.enable(this.sprite);
-    this.sprite.update = this.update.bind(this);
-    this.sprite.body.collideWorldBounds = true;
-    this.sprite.anchor = new Phaser.Point(0.5, 0.5);
-    this.sprite.BULLET_SPEED = 200;
-    this.sprite.TURN_SPEED = 5;
+    this.x = Math.floor((Math.random() * Nakama.game.scale.maxWidth) + 1);
+    this.y = Math.floor((Math.random() * Nakama.game.scale.maxHeight) + 1);
+    //if (this.x > (Nakama.player.sprite.position.x + 20 ||
+    // this.x < Nakama.player.sprite.position.x - 20) &&
+    // (this.y > Nakama.player.sprite.position.y + 20 ||
+    // this.y < Nakama.player.sprite.position.y - 20)
+    // ) {
+      this.sprite = Nakama.enemyGroup.create(this.x, this.y, 'enemy');
+      Nakama.game.physics.arcade.enable(this.sprite);
+      this.sprite.update = this.update.bind(this);
+      this.sprite.body.collideWorldBounds = true;
+      this.sprite.anchor = new Phaser.Point(0.5, 0.5);
+      this.sprite.BULLET_SPEED = 100;
+      this.sprite.TURN_SPEED = 5;
+    //}
   }
 
   update() {
+
+    Nakama.game.physics.arcade.overlap(
+      Nakama.enemyGroup,
+      Nakama.playerGroup,
+      this.onBulletHitEnemy
+    );
 
     var targetAngle = Nakama.game.math.angleBetween(
       this.sprite.position.x,
@@ -43,4 +57,9 @@ class EnemyController {
       this.sprite.body.velocity.y = Math.sin(this.sprite.rotation - Math.PI/2) * this.sprite.BULLET_SPEED;
     }
   }
+
+  onBulletHitEnemy (enemySprite, playerSprite) {
+    Nakama.explodePlayer = new Explode(playerSprite.position.x, playerSprite.position.y, 'explodePlayer');
+    playerSprite.kill();
+    }
 }
