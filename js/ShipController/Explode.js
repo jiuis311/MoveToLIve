@@ -1,11 +1,11 @@
 class Explode {
-  constructor(x, y, spriteName) {
-    this.sprite = Nakama.game.add.sprite(x, y, spriteName);
-    Nakama.game.physics.arcade.enable(this.sprite);
-    this.sprite.update = this.update.bind(this);
-    this.sprite.anchor = new Phaser.Point(0.5, 0.5);
-
-    setTimeout(function() {Nakama.explodePlayer.sprite.kill();}, 200);
+  constructor(x, y) {
+    this.explode = Nakama.game.add.sprite(x, y, 'kaboom');
+    Nakama.game.physics.arcade.enable(this.explode);
+    this.explode.anchor = new Phaser.Point(0.5, 0.5);
+    this.explode.scale.set(0.75);
+    this.explode.animations.add('explode');
+    this.explode.play('explode', 20, false, true);
   }
 
   update() {}

@@ -30,6 +30,9 @@ var preload = function(){
   Nakama.game.load.image('player','Assets/spaceship.png');
   Nakama.game.load.image('enemy','Assets/EnemyType2.png');
   Nakama.game.load.image('explodePlayer','Assets/explosion1.png');
+
+  //exlode animation preload
+  Nakama.game.load.spritesheet('kaboom', 'Assets/explode.png', 128, 128);
 }
 
 // initialize the game
@@ -42,12 +45,18 @@ var create = function(){
   Nakama.enemyGroup = Nakama.game.add.physicsGroup();
   Nakama.playerGroup = Nakama.game.add.physicsGroup();
 
+  //  An explosion pool
+  // explosions = Nakama.game.add.physicsGroup();
+  // explosions.createMultiple(30, 'kaboom');
+  // explosions.forEach(setupInvader, this);
+
   //create stuff
   Nakama.shieldToken = new ShieldToken();
   Nakama.player = new PlayerController();
   Nakama.shield = {};
   Nakama.enemies = [];
-  Nakama.explodePlayer = {};
+  Nakama.explosions = [];
+
 
   createEnemy();
 
@@ -78,3 +87,12 @@ var createEnemy = function() {
       setTimeout(function(){ Nakama.enemies.push(new EnemyController()); }, i*1000);
   }
 }
+
+//dont know what
+// function setupInvader (invader) {
+//
+//     invader.anchor.x = 0.5;
+//     invader.anchor.y = 0.5;
+//     invader.animations.add('kaboom');
+//
+// }

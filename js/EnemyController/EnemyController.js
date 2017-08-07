@@ -2,19 +2,19 @@ class EnemyController {
   constructor () {
     this.x = Math.floor((Math.random() * Nakama.game.scale.maxWidth) + 1);
     this.y = Math.floor((Math.random() * Nakama.game.scale.maxHeight) + 1);
-    //if (this.x > (Nakama.player.sprite.position.x + 20 ||
-    // this.x < Nakama.player.sprite.position.x - 20) &&
-    // (this.y > Nakama.player.sprite.position.y + 20 ||
-    // this.y < Nakama.player.sprite.position.y - 20)
-    // ) {
-      this.sprite = Nakama.enemyGroup.create(this.x, this.y, 'enemy');
-      Nakama.game.physics.arcade.enable(this.sprite);
-      this.sprite.update = this.update.bind(this);
-      this.sprite.body.collideWorldBounds = true;
-      this.sprite.anchor = new Phaser.Point(0.5, 0.5);
-      this.sprite.BULLET_SPEED = 100;
-      this.sprite.TURN_SPEED = 5;
-    //}
+    this.z = Math.floor((Math.random() * 4) + 1);
+
+    if (this.z == 1) this.y = -30;
+    if (this.z == 2) this.x = Nakama.game.scale.maxWidth + 30;
+    if (this.z == 3) this.y = Nakama.game.scale.maxHeight + 30;
+    if (this.z == 4) this.x = -30;
+
+    this.sprite = Nakama.enemyGroup.create(this.x, this.y, 'enemy');
+    Nakama.game.physics.arcade.enable(this.sprite);
+    this.sprite.update = this.update.bind(this);
+    this.sprite.anchor = new Phaser.Point(0.5, 0.5);
+    this.sprite.BULLET_SPEED = 100;
+    this.sprite.TURN_SPEED = 5;
   }
 
   update() {
@@ -60,6 +60,7 @@ class EnemyController {
 
   onBulletHitEnemy (enemySprite, playerSprite) {
     Nakama.explodePlayer = new Explode(playerSprite.position.x, playerSprite.position.y, 'explodePlayer');
+    Nakama.explosions.push(new Explode(playerSprite.position.x, playerSprite.position.y));
     playerSprite.kill();
     }
 }

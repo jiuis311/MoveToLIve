@@ -19,6 +19,7 @@ class Shield {
   }
 
    onShieldHitEnemy (enemySprite, shieldSprite) {
+    Nakama.explosions.push(new Explode(enemySprite.position.x, enemySprite.position.y));
     enemySprite.kill();
   }
 }
