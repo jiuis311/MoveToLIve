@@ -1,6 +1,7 @@
 class ShieldToken {
   constructor() {
     this.sprite = Nakama.tokenGroup.create(800, 100, 'shieldToken');
+    this.sprite.scale.set(0.75);
     Nakama.game.physics.arcade.enable(this.sprite);
     this.sprite.update = this.update.bind(this);
     this.sprite.anchor = new Phaser.Point(0.5, 0.5);

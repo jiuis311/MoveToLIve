@@ -22,7 +22,7 @@ class EnemyController {
     Nakama.game.physics.arcade.overlap(
       Nakama.enemyGroup,
       Nakama.playerGroup,
-      this.onBulletHitEnemy
+      this.onEnemyHitPlayer
     );
 
     var targetAngle = Nakama.game.math.angleBetween(
@@ -58,9 +58,10 @@ class EnemyController {
     }
   }
 
-  onBulletHitEnemy (enemySprite, playerSprite) {
+  onEnemyHitPlayer (enemySprite, playerSprite) {
     Nakama.explodePlayer = new Explode(playerSprite.position.x, playerSprite.position.y, 'explodePlayer');
     Nakama.explosions.push(new Explode(playerSprite.position.x, playerSprite.position.y));
     playerSprite.kill();
+    Nakama.explosionSound.push(new ExplodeSound('playerExplodeSound', 0.4));
     }
 }

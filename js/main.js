@@ -33,6 +33,10 @@ var preload = function(){
 
   //exlode animation preload
   Nakama.game.load.spritesheet('kaboom', 'Assets/explode.png', 128, 128);
+
+  //load sound
+  Nakama.game.load.audio('playerExplodeSound','Assets/Explosion+7.mp3');
+  Nakama.game.load.audio('enemyExplodeSound','Assets/Explosion.mp3');
 }
 
 // initialize the game
@@ -45,10 +49,6 @@ var create = function(){
   Nakama.enemyGroup = Nakama.game.add.physicsGroup();
   Nakama.playerGroup = Nakama.game.add.physicsGroup();
 
-  //  An explosion pool
-  // explosions = Nakama.game.add.physicsGroup();
-  // explosions.createMultiple(30, 'kaboom');
-  // explosions.forEach(setupInvader, this);
 
   //create stuff
   Nakama.shieldToken = new ShieldToken();
@@ -56,6 +56,9 @@ var create = function(){
   Nakama.shield = {};
   Nakama.enemies = [];
   Nakama.explosions = [];
+
+  //sound
+  Nakama.explosionSound = [];
 
 
   createEnemy();
@@ -66,33 +69,15 @@ var create = function(){
 
 // update game state each frame
 var update = function(){
-  // Nakama.game.physics.arcade.overlap(
-  //   Nakama.enemyGroup,
-  //   Nakama.playerGroup,
-  //   onBulletHitEnemy
-  // );
+
 }
 
 // before camera render (mostly for debug)
 var render = function(){}
 
-// var onBulletHitEnemy = function(enemySprite, playerSprite) {
-//   playerSprite.kill();
-//
-//   //reset Bullet Type 3
-// }
 
 var createEnemy = function() {
     for(var i = 0; i < 1000; i++) {
       setTimeout(function(){ Nakama.enemies.push(new EnemyController()); }, i*1000);
   }
 }
-
-//dont know what
-// function setupInvader (invader) {
-//
-//     invader.anchor.x = 0.5;
-//     invader.anchor.y = 0.5;
-//     invader.animations.add('kaboom');
-//
-// }
