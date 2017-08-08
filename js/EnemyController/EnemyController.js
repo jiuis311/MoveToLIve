@@ -63,5 +63,8 @@ class EnemyController {
     Nakama.explosions.push(new Explode(playerSprite.position.x, playerSprite.position.y));
     playerSprite.kill();
     Nakama.explosionSound.push(new ExplodeSound('playerExplodeSound', 0.4));
+
+    //scorring -- Define death
+    Nakama.playerDie = true;
     }
 }

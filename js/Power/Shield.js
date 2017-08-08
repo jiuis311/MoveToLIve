@@ -5,7 +5,9 @@ class Shield {
     this.sprite.update = this.update.bind(this);
     this.sprite.anchor = new Phaser.Point(0.5, 0.5);
 
-    setTimeout(function() {Nakama.shield.sprite.kill();}, 10000);
+    //kill shield
+    this.timerShieldKill = Nakama.game.time.events;
+    this.timerShieldKill.repeat(7000, 1, this.killShield, this);
   }
 
   update() {
@@ -22,5 +24,12 @@ class Shield {
     Nakama.explosions.push(new Explode(enemySprite.position.x, enemySprite.position.y));
     enemySprite.kill();
     Nakama.explosionSound.push(new ExplodeSound('enemyExplodeSound', 0.2));
+    
+    //score ---- bonus kill enemy
+    Nakama.score += Nakama.configs.BONUS_KILL_ENEMY;
+  }
+
+  killShield () {
+    this.sprite.kill();
   }
 }
