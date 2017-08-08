@@ -35,7 +35,7 @@ var preload = function(){
   Nakama.game.load.image('explodePlayer','Assets/explosion1.png');
 
   //exlode animation preload
-  Nakama.game.load.spritesheet('kaboom', 'Assets/explode.png', 128, 128);
+  Nakama.game.load.spritesheet('kaboom', 'Assets/Explode.png', 128, 128);
 
   //load sound
   Nakama.game.load.audio('playerExplodeSound','Assets/Explosion+7.mp3');
