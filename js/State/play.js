@@ -1,30 +1,30 @@
 var playState = {
-  preload: function(){
-
-    Nakama.game.scale.minWidth = 800;
-    Nakama.game.scale.minHeight = 450;
-    Nakama.game.scale.maxWidth = 1600;
-    Nakama.game.scale.maxHeight = 900;
-    Nakama.game.scale.pageAlignHorizontally = true;
-    Nakama.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-
-    Nakama.game.time.advancedTiming = true;
-
-    Nakama.game.load.atlasJSONHash('assets', 'Assets/assets.png', 'Assets/assets.json');
-    Nakama.game.load.image('background','Assets/background2.png');
-    Nakama.game.load.image('shield','Assets/shield.png');
-    Nakama.game.load.image('shieldToken','Assets/flat-shield-icon-17.png');
-    Nakama.game.load.image('player','Assets/spaceship.png');
-    Nakama.game.load.image('enemy','Assets/EnemyType2.png');
-    Nakama.game.load.image('explodePlayer','Assets/explosion1.png');
-
-    //exlode animation preload
-    Nakama.game.load.spritesheet('kaboom', 'Assets/Explode.png', 128, 128);
-
-    //load sound
-    Nakama.game.load.audio('playerExplodeSound','Assets/Explosion+7.mp3');
-    Nakama.game.load.audio('enemyExplodeSound','Assets/Explosion.mp3');
-  },
+  // preload: function(){
+  //
+  //   Nakama.game.scale.minWidth = 800;
+  //   Nakama.game.scale.minHeight = 450;
+  //   Nakama.game.scale.maxWidth = 1600;
+  //   Nakama.game.scale.maxHeight = 900;
+  //   Nakama.game.scale.pageAlignHorizontally = true;
+  //   Nakama.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+  //
+  //   Nakama.game.time.advancedTiming = true;
+  //
+  //   Nakama.game.load.atlasJSONHash('assets', 'Assets/assets.png', 'Assets/assets.json');
+  //   Nakama.game.load.image('background','Assets/background2.png');
+  //   Nakama.game.load.image('shield','Assets/shield.png');
+  //   Nakama.game.load.image('shieldToken','Assets/flat-shield-icon-17.png');
+  //   Nakama.game.load.image('player','Assets/spaceship.png');
+  //   Nakama.game.load.image('enemy','Assets/EnemyType2.png');
+  //   Nakama.game.load.image('explodePlayer','Assets/explosion1.png');
+  //
+  //   //exlode animation preload
+  //   Nakama.game.load.spritesheet('kaboom', 'Assets/Explode.png', 128, 128);
+  //
+  //   //load sound
+  //   Nakama.game.load.audio('playerExplodeSound','Assets/Explosion+7.mp3');
+  //   Nakama.game.load.audio('enemyExplodeSound','Assets/Explosion.mp3');
+  // },
 
   // initialize the game
   create: function(){
@@ -35,6 +35,7 @@ var playState = {
     Nakama.shieldGroup = Nakama.game.add.physicsGroup();
     Nakama.enemyGroup = Nakama.game.add.physicsGroup();
     Nakama.playerGroup = Nakama.game.add.physicsGroup();
+    Nakama.meteorGroup = Nakama.game.add.physicsGroup();
 
     //Scorring
     Nakama.style = { font: "30px Arial", fill: "white", boundsAlignH: "center", boundsAlignV: "middle" };
@@ -47,11 +48,16 @@ var playState = {
     Nakama.shieldTokens = [];
     Nakama.tokenController = new TokenController();
 
+    //create Meteor
+    Nakama.meteorController = new MeteorController();
+
     // create player
     Nakama.player = new PlayerController();
     Nakama.shield = {};
     Nakama.enemies = [];
     Nakama.explosions = [];
+    Nakama.meteors = [];
+
 
     //sound
     Nakama.explosionSound = [];
@@ -62,15 +68,14 @@ var playState = {
     Nakama.game.physics.startSystem(Phaser.Physics.ARCADE);
     Nakama.keyboard = Nakama.game.input.keyboard;
 
-    Nakama.fps = Nakama.game.add.text(100, 100, 'FPS: 0',{
-      font: "30px Arial",
-      fill: "#ffffff"
-    });
+    // Nakama.fps = Nakama.game.add.text(100, 100, 'FPS: 0',{
+    //   font: "30px Arial",
+    //   fill: "#ffffff"
+    // });
   },
 
   // update game state each frame
   update: function(){
-    Nakama.fps.setText(`FPS: ${Nakama.game.time.fps}`);
     //scorring
     if(!Nakama.playerDie){
       Nakama.frame++;

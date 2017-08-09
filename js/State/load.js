@@ -18,6 +18,7 @@ var loadState = {
     Nakama.game.load.image('player','Assets/spaceship.png');
     Nakama.game.load.image('enemy','Assets/EnemyType2.png');
     Nakama.game.load.image('explodePlayer','Assets/explosion1.png');
+    Nakama.game.load.image('meteor','Assets/meteorite.png');
 
     //exlode animation preload
     Nakama.game.load.spritesheet('kaboom', 'Assets/Explode.png', 128, 128);

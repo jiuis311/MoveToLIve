@@ -66,6 +66,6 @@ class EnemyController {
     Nakama.explosionSound.push(new ExplodeSound('playerExplodeSound', 0.4));
 
     //scorring -- Define death
-    Nakama.playerDie = true;
+    setTimeout(function() {Nakama.playerDie = true;}, 2000);
     }
 }
