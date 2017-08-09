@@ -11,6 +11,7 @@ class EnemyController {
 
     this.sprite = Nakama.enemyGroup.create(this.x, this.y, 'enemy');
     Nakama.game.physics.arcade.enable(this.sprite);
+    this.sprite.body.setCircle(this.sprite.width/2);
     this.sprite.update = this.update.bind(this);
     this.sprite.anchor = new Phaser.Point(0.5, 0.5);
     this.sprite.BULLET_SPEED = 100;

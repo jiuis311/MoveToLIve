@@ -4,6 +4,7 @@ class PlayerController {
     Nakama.game.physics.arcade.enable(this.sprite);
     this.sprite.update = this.update.bind(this);
     this.sprite.body.collideWorldBounds = true;
+    this.sprite.body.setCircle(this.sprite.width/2);
     this.sprite.anchor = new Phaser.Point(0.5, 0.5);
     this.sprite.BULLET_SPEED = 300;
     this.sprite.TURN_SPEED = 10;
