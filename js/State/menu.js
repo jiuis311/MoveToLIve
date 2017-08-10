@@ -11,16 +11,15 @@ var menuState = {
     Nakama.game.load.image('background','Assets/background2.png');
     Nakama.game.load.image('player','Assets/spaceship.png');
     Nakama.game.load.image('button', 'Assets/playbutton.png');
+    Nakama.game.load.image('gameName', 'Assets/GameName.png');
   },
   create: function(){
     Nakama.game.add.sprite(0, 0, 'background');
-
-    // var playerGroup = Nakama.game.add.physicsGroup();
-    //
-    // var player = new PlayerController();
+    Nakama.gameName = Nakama.game.add.sprite(Nakama.game.width/2, Nakama.game.height/2 - 120, 'gameName');
+    Nakama.gameName.anchor = new Phaser.Point(0.5, 0.5);
 
     var checkPlay = false;
-    var button = Nakama.game.add.button(Nakama.game.world.centerX - 150, Nakama.game.world.centerY - 150, 'button', function(){
+    var button = Nakama.game.add.button(Nakama.game.world.centerX - 150, Nakama.game.world.centerY + 130, 'button', function(){
       checkPlay = true;
       button.pendingDestroy = true;
       this.start();

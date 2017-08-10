@@ -24,7 +24,7 @@ class Shield {
     Nakama.explosions.push(new Explode(enemySprite.position.x, enemySprite.position.y));
     enemySprite.kill();
     Nakama.explosionSound.push(new ExplodeSound('enemyExplodeSound', 0.2));
-    
+
     //score ---- bonus kill enemy
     Nakama.score += Nakama.configs.BONUS_KILL_ENEMY;
   }

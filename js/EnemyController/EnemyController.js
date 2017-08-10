@@ -14,7 +14,7 @@ class EnemyController {
     this.sprite.body.setCircle(this.sprite.width/2);
     this.sprite.update = this.update.bind(this);
     this.sprite.anchor = new Phaser.Point(0.5, 0.5);
-    this.sprite.BULLET_SPEED = 100;
+    this.sprite.ENEMY_SPEED = 100;
     this.sprite.TURN_SPEED = 5;
   }
 
@@ -54,8 +54,8 @@ class EnemyController {
       }
 
       //set SPEED
-      this.sprite.body.velocity.x = Math.cos(this.sprite.rotation - Math.PI/2) * this.sprite.BULLET_SPEED;
-      this.sprite.body.velocity.y = Math.sin(this.sprite.rotation - Math.PI/2) * this.sprite.BULLET_SPEED;
+      this.sprite.body.velocity.x = Math.cos(this.sprite.rotation - Math.PI/2) * this.sprite.ENEMY_SPEED;
+      this.sprite.body.velocity.y = Math.sin(this.sprite.rotation - Math.PI/2) * this.sprite.ENEMY_SPEED;
     }
   }
 

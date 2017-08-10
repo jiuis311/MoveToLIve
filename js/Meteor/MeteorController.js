@@ -1,14 +1,60 @@
 class MeteorController {
   constructor() {
-    // create shield
-    this.timerMeteor = Nakama.game.time.events;
-    this.METEOR_CREATE_TIME = Math.floor((Math.random() * 8) + 4);
-    this.timerMeteor.repeat(this.METEOR_CREATE_TIME*1000, 1, this.createMeteor, this);
+    this.x = Math.floor((Math.random() * Nakama.game.scale.maxWidth) + 1);
+    this.y = Math.floor((Math.random() * Nakama.game.scale.maxHeight) + 1);
+    this.z = Math.floor((Math.random() * 4) + 1);
+    this.METEOR_SCALE = Math.floor((Math.random() * 4) + 1);
+
+    if (this.z == 1) this.y = -100;
+    if (this.z == 2) this.x = Nakama.game.scale.maxWidth + 100;
+    if (this.z == 3) this.y = Nakama.game.scale.maxHeight + 100;
+    if (this.z == 4) this.x = -100;
+
+    this.sprite = Nakama.meteorGroup.create(this.x, this.y, 'meteor');
+    Nakama.game.physics.arcade.enable(this.sprite);
+    this.sprite.body.setCircle(this.sprite.width/2);
+    this.sprite.scale.set(this.METEOR_SCALE/10);
+    this.sprite.anchor = new Phaser.Point(0.5, 0.5);
+    this.sprite.body.setCircle(this.sprite.width/2);
+    this.sprite.METEOR_SPEED = 100;
+    this.sprite.ROTATE_SPEED = 5;
+    this.sprite.body.velocity.x = (Nakama.player.sprite.position.x - this.x) / 1.5;
+    this.sprite.body.velocity.y = (Nakama.player.sprite.position.y - this.y) / 1.5;
+    this.sprite.update = this.update.bind(this);
+
+    this.timerMeteorKill = Nakama.game.time.events;
+    this.timerMeteorKill.repeat(7000, 1, this.killMeteor, this);
   }
 
-  createMeteor () {
-    Nakama.meteors.push(new Meteor());
-    this.METEOR_CREATE_TIME = Math.floor((Math.random() * 8) + 4);
-    this.timerMeteor.repeat(this.METEOR_CREATE_TIME*1000, 1, this.createMeteor, this);
+  update() {
+    this.sprite.rotation += Nakama.game.math.degToRad(this.sprite.ROTATE_SPEED);
+    Nakama.game.physics.arcade.overlap(
+      Nakama.playerGroup,
+      Nakama.meteorGroup,
+      this.onMeteorHitPlayer
+    );
+    Nakama.game.physics.arcade.overlap(
+      Nakama.shieldGroup,
+      Nakama.meteorGroup,
+      this.onMeteorHitShield
+    );
+  }
+
+  onMeteorHitPlayer (playerSprite, meteorSprite) {
+    Nakama.explodePlayer = new Explode(playerSprite.position.x, playerSprite.position.y, 'explodePlayer');
+    Nakama.explosions.push(new Explode(playerSprite.position.x, playerSprite.position.y));
+    playerSprite.kill();
+    Nakama.explosionSound.push(new ExplodeSound('playerExplodeSound', 0.4));
+
+    //scorring -- Define death
+    setTimeout(function() {Nakama.playerDie = true;}, 2000);
+ }
+
+  onMeteorHitShield (shieldSprite, meteorSprite) {
+   shieldSprite.kill();
+}
+
+    killMeteor () {
+    this.sprite.kill();
   }
 }

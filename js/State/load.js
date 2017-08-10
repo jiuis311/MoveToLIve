@@ -14,11 +14,13 @@ var loadState = {
     Nakama.game.load.atlasJSONHash('assets', 'Assets/assets.png', 'Assets/assets.json');
     Nakama.game.load.image('background','Assets/background2.png');
     Nakama.game.load.image('shield','Assets/shield.png');
-    Nakama.game.load.image('shieldToken','Assets/flat-shield-icon-17.png');
+    Nakama.game.load.image('shieldToken','Assets/shield2.png');
     Nakama.game.load.image('player','Assets/spaceship.png');
     Nakama.game.load.image('enemy','Assets/EnemyType2.png');
+    Nakama.game.load.image('enemy2','Assets/EnemyType1.png');
     Nakama.game.load.image('explodePlayer','Assets/explosion1.png');
     Nakama.game.load.image('meteor','Assets/meteorite.png');
+    Nakama.game.load.image('spaceBomb', 'Assets/SpaceBomb.png');
 
     //exlode animation preload
     Nakama.game.load.spritesheet('kaboom', 'Assets/Explode.png', 128, 128);
@@ -29,8 +31,8 @@ var loadState = {
   },
 
   create: function(){
-    var stateTrailer1 = Nakama.game.add.text(100, 100, 'Do more trailer 2',{
-      font: "30px Chiller",
+    var stateTrailer1 = Nakama.game.add.text(100, 100, 'LOADING...',{
+      font: "50px Chiller",
       fill: "#ffffff"
     });
   //   var spacebarKey = Nakama.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
