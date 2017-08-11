@@ -8,7 +8,15 @@ class EnemyType2Controller {
 
     this.sprite.body.velocity.x = VelX;
     this.sprite.body.velocity.y = VelY;
+
+    //kill shield
+    this.timerEnemy2Kill = Nakama.game.time.events;
+    this.timerEnemy2Kill.repeat(15000, 1, this.killEnemy2, this);
   }
 
   update() {}
+
+  killEnemy2 () {
+    this.sprite.kill();
+  }
 }

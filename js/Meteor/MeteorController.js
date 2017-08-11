@@ -12,8 +12,8 @@ class MeteorController {
 
     this.sprite = Nakama.meteorGroup.create(this.x, this.y, 'meteor');
     Nakama.game.physics.arcade.enable(this.sprite);
-    this.sprite.body.setCircle(this.sprite.width/2);
     this.sprite.scale.set(this.METEOR_SCALE/10);
+    this.sprite.body.setCircle(this.sprite.width/2);
     this.sprite.anchor = new Phaser.Point(0.5, 0.5);
     this.sprite.body.setCircle(this.sprite.width/2);
     this.sprite.METEOR_SPEED = 100;

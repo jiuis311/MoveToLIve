@@ -10,6 +10,11 @@ class ShieldToken {
     // set scale
     this.sprite.scaleSize = 0.1;
     this.sprite.scale.set(this.sprite.scaleSize);
+    this.sprite.ROTATE_SPEED = 1;
+
+    //kill shield
+    this.timerShieldTokenKill = Nakama.game.time.events;
+    this.timerShieldTokenKill.repeat(15000, 1, this.killShieldToken, this);
   }
 
   update() {
@@ -22,10 +27,16 @@ class ShieldToken {
       this.sprite.scaleSize += 0.1;
       this.sprite.scale.set(this.sprite.scaleSize);
     }
+
+    this.sprite.rotation += Nakama.game.math.degToRad(this.sprite.ROTATE_SPEED);
   }
 
   onPlayerHitToken (playerSprite, tokenSprite) {
    tokenSprite.kill();
    Nakama.shield = new Shield();
+ }
+
+ killShieldToken () {
+   this.sprite.kill();
  }
 }

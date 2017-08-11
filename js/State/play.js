@@ -3,6 +3,9 @@ var playState = {
   create: function(){
     Nakama.game.add.sprite(0, 0, 'background');
     //Nakama.game.add.sprite(300, 300, 'spaceBomb');
+    Nakama.blackHole = Nakama.game.add.sprite(300, 700, 'BlackHole');
+    Nakama.blackHole.anchor = new Phaser.Point(0.5, 0.5);
+    Nakama.blackHole.scale.set(1);
 
     //physics group
     Nakama.tokenGroup = Nakama.game.add.physicsGroup();
@@ -33,10 +36,11 @@ var playState = {
     Nakama.explosions = [];
     Nakama.meteors = [];
 
-    //timing
-    Nakama.gameTime = 0;
+    // create EnemyFactory
+    Nakama.enemyFactories.push(new EnemyFactory());
 
-    //EnemyType2 tester
+
+    //tester
     //Nakama.enemies.push(new EnemyType2Controller(100, 100, 0, 100));
 
     //sound
@@ -56,7 +60,6 @@ var playState = {
     if(!Nakama.playerDie){
       Nakama.frame++;
       Nakama.score += (Nakama.frame % 60 === 0);
-      Nakama.gameTime += (Nakama.frame % 60 === 0);
       Nakama.displayingText.setText("Score: " + Nakama.score);
     }else {
       Nakama.displayingText.destroy();
@@ -73,11 +76,9 @@ var playState = {
       Nakama.game.state.start('win');
     }
 
-    //enemy rain
-    if (Nakama.gameTime == 30) {
-      Nakama.enemyFactories.push(new EnemyFactory1());
-      Nakama.gameTime++;
-    }
+
+    //blackHole spin
+    Nakama.blackHole.rotation += Nakama.game.math.degToRad(-1);
   },
 
   // before camera render (mostly for debug)

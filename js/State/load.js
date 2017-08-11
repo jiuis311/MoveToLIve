@@ -21,6 +21,7 @@ var loadState = {
     Nakama.game.load.image('explodePlayer','Assets/explosion1.png');
     Nakama.game.load.image('meteor','Assets/meteorite.png');
     Nakama.game.load.image('spaceBomb', 'Assets/SpaceBomb.png');
+    Nakama.game.load.image('BlackHole', 'Assets/Black-Hole.png');
 
     //exlode animation preload
     Nakama.game.load.spritesheet('kaboom', 'Assets/Explode.png', 128, 128);
@@ -32,7 +33,7 @@ var loadState = {
 
   create: function(){
     var stateTrailer1 = Nakama.game.add.text(100, 100, 'LOADING...',{
-      font: "50px Chiller",
+      font: "100px Chiller",
       fill: "#ffffff"
     });
   //   var spacebarKey = Nakama.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
