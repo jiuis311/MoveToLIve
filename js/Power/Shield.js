@@ -2,6 +2,7 @@ class Shield {
   constructor() {
     this.sprite = Nakama.shieldGroup.create(Nakama.player.sprite.position.x, Nakama.player.sprite.position.y, 'shield');
     Nakama.game.physics.arcade.enable(this.sprite);
+    this.sprite.body.setCircle(this.sprite.width/2);
     this.sprite.update = this.update.bind(this);
     this.sprite.anchor = new Phaser.Point(0.5, 0.5);
 

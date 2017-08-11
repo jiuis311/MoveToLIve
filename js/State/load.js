@@ -22,6 +22,8 @@ var loadState = {
     Nakama.game.load.image('meteor','Assets/meteorite.png');
     Nakama.game.load.image('spaceBomb', 'Assets/SpaceBomb.png');
     Nakama.game.load.image('BlackHole', 'Assets/Black-Hole.png');
+    Nakama.game.load.image('BurningSun', 'Assets/BurningSun.png');
+    Nakama.game.load.image('SunToken', 'Assets/SunToken.png');
 
     //exlode animation preload
     Nakama.game.load.spritesheet('kaboom', 'Assets/Explode.png', 128, 128);

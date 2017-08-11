@@ -8,7 +8,9 @@ var playState = {
     Nakama.blackHole.scale.set(1);
 
     //physics group
-    Nakama.tokenGroup = Nakama.game.add.physicsGroup();
+    Nakama.sunGroup = Nakama.game.add.physicsGroup();
+    Nakama.shieldTokenGroup = Nakama.game.add.physicsGroup();
+    Nakama.sunTokenGroup = Nakama.game.add.physicsGroup();
     Nakama.shieldGroup = Nakama.game.add.physicsGroup();
     Nakama.enemyGroup = Nakama.game.add.physicsGroup();
     Nakama.playerGroup = Nakama.game.add.physicsGroup();
@@ -22,7 +24,7 @@ var playState = {
     Nakama.playerDie = false;
 
     //create token
-    Nakama.shieldTokens = [];
+    Nakama.tokens = [];
     Nakama.tokenController = new TokenController();
 
     //create Meteor
@@ -35,6 +37,7 @@ var playState = {
     Nakama.enemyFactories = [];
     Nakama.explosions = [];
     Nakama.meteors = [];
+    Nakama.suns = [];
 
     // create EnemyFactory
     Nakama.enemyFactories.push(new EnemyFactory());
@@ -42,12 +45,11 @@ var playState = {
 
     //tester
     //Nakama.enemies.push(new EnemyType2Controller(100, 100, 0, 100));
+    //Nakama.game.add.sprite(500, 200, 'BurningSun');
+    //Nakama.suns.push(new SunController(500, 600));
 
     //sound
     Nakama.explosionSound = [];
-
-
-    this.createEnemy();
 
     Nakama.game.physics.startSystem(Phaser.Physics.ARCADE);
     Nakama.keyboard = Nakama.game.input.keyboard;
@@ -70,9 +72,6 @@ var playState = {
       else if(localStorage.getItem("highscore") < Nakama.score){
         localStorage.setItem("highscore", Nakama.score);
       }
-
-      //Create Type 1 enemy (TODO - put in Factory)
-      clearInterval(this.enemyInterval);
       Nakama.game.state.start('win');
     }
 
@@ -88,9 +87,4 @@ var playState = {
     //   Nakama.game.debug.body(enemy.sprite);
     // });
   },
-
-
-  createEnemy: function() {
-    this.enemyInterval = setInterval(function(){ Nakama.enemies.push(new EnemyController()); }, 1000);
-  }
 }
