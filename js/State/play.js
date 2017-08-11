@@ -9,8 +9,10 @@ var playState = {
 
     //physics group
     Nakama.sunGroup = Nakama.game.add.physicsGroup();
+    Nakama.bulletTokenGroup = Nakama.game.add.physicsGroup();
     Nakama.shieldTokenGroup = Nakama.game.add.physicsGroup();
     Nakama.sunTokenGroup = Nakama.game.add.physicsGroup();
+    Nakama.bulletGroup = Nakama.game.add.physicsGroup();
     Nakama.shieldGroup = Nakama.game.add.physicsGroup();
     Nakama.enemyGroup = Nakama.game.add.physicsGroup();
     Nakama.playerGroup = Nakama.game.add.physicsGroup();
@@ -38,6 +40,7 @@ var playState = {
     Nakama.explosions = [];
     Nakama.meteors = [];
     Nakama.suns = [];
+    Nakama.bullets = [];
 
     // create EnemyFactory
     Nakama.enemyFactories.push(new EnemyFactory());

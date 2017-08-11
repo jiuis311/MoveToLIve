@@ -24,6 +24,8 @@ var loadState = {
     Nakama.game.load.image('BlackHole', 'Assets/Black-Hole.png');
     Nakama.game.load.image('BurningSun', 'Assets/BurningSun.png');
     Nakama.game.load.image('SunToken', 'Assets/SunToken.png');
+    Nakama.game.load.image('BulletToken', 'Assets/Target3.png');
+    Nakama.game.load.image('bullet','Assets/Original Sprites/BulletType1Upgraded.png');
 
     //exlode animation preload
     Nakama.game.load.spritesheet('kaboom', 'Assets/Explode.png', 128, 128);
