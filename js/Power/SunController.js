@@ -13,11 +13,11 @@ class SunController {
 
     //kill Sun
     this.timerSprite = Nakama.game.time.events;
-    this.timerSprite.repeat(7500, 1, this.killSprite, this);
+    this.timerSprite.repeat(3500, 1, this.killSprite, this);
 
     //shrink
     this.sprite.SHRINK = false;
-    this.timerSprite.repeat(7200, 1, this.shrinkSprite, this);
+    this.timerSprite.repeat(3200, 1, this.shrinkSprite, this);
   }
 
   update() {

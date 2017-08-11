@@ -6,6 +6,8 @@ class EnemyType2Controller {
     this.sprite.update = this.update.bind(this);
     this.sprite.scale.set(0.9);
 
+    this.VelX = VelX;
+    this.VelY = VelY;
     this.sprite.body.velocity.x = VelX;
     this.sprite.body.velocity.y = VelY;
 
@@ -14,7 +16,10 @@ class EnemyType2Controller {
     this.timerEnemy2Kill.repeat(15000, 1, this.killEnemy2, this);
   }
 
-  update() {}
+  update() {
+    this.sprite.body.velocity.x = this.VelX;
+    this.sprite.body.velocity.y = this.VelY;
+  }
 
   killEnemy2 () {
     this.sprite.kill();

@@ -9,6 +9,12 @@ class Shield {
     //kill shield
     this.timerShieldKill = Nakama.game.time.events;
     this.timerShieldKill.repeat(7000, 1, this.killShield, this);
+
+    //shrink
+    this.sprite.SET_SCALE = 1;
+    this.timerSprite = Nakama.game.time.events;
+    this.sprite.SHRINK = false;
+    this.timerSprite.repeat(6200, 1, this.shrinkSprite, this);
   }
 
   update() {
@@ -19,6 +25,12 @@ class Shield {
       Nakama.shieldGroup,
       this.onShieldHitEnemy
     );
+    if (this.sprite.SHRINK) {
+      if (this.sprite.SET_SCALE > 0.02) {
+        this.sprite.SET_SCALE -= 0.02;
+        this.sprite.scale.set(this.sprite.SET_SCALE);
+      }
+    }
   }
 
    onShieldHitEnemy (enemySprite, shieldSprite) {
@@ -32,5 +44,9 @@ class Shield {
 
   killShield () {
     this.sprite.kill();
+  }
+
+  shrinkSprite() {
+    this.sprite.SHRINK = true;
   }
 }

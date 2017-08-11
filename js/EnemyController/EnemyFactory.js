@@ -9,6 +9,7 @@ class EnemyFactory {
   }
 
   update() {
+    Nakama.game.physics.arcade.collide(Nakama.enemyGroup);
     if (!Nakama.playerDie) {
       Nakama.gameTime += (Nakama.frame % 60 === 0);
       //enemy rain

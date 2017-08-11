@@ -3,7 +3,7 @@ class MeteorController {
     this.x = Math.floor((Math.random() * Nakama.game.scale.maxWidth) + 1);
     this.y = Math.floor((Math.random() * Nakama.game.scale.maxHeight) + 1);
     this.z = Math.floor((Math.random() * 4) + 1);
-    this.METEOR_SCALE = Math.floor((Math.random() * 4) + 1);
+    this.METEOR_SCALE = Nakama.game.rnd.integerInRange(3, 7);
 
     if (this.z == 1) this.y = -100;
     if (this.z == 2) this.x = Nakama.game.scale.maxWidth + 100;
@@ -16,7 +16,6 @@ class MeteorController {
     this.sprite.body.setCircle(this.sprite.width/2);
     this.sprite.anchor = new Phaser.Point(0.5, 0.5);
     this.sprite.body.setCircle(this.sprite.width/2);
-    this.sprite.METEOR_SPEED = 100;
     this.sprite.ROTATE_SPEED = 5;
     this.sprite.body.velocity.x = (Nakama.player.sprite.position.x - this.x) / 1.5;
     this.sprite.body.velocity.y = (Nakama.player.sprite.position.y - this.y) / 1.5;
