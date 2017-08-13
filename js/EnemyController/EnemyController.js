@@ -14,7 +14,7 @@ class EnemyController {
     this.sprite.body.setCircle(this.sprite.width/2);
     this.sprite.update = this.update.bind(this);
     this.sprite.anchor = new Phaser.Point(0.5, 0.5);
-    this.sprite.ENEMY_SPEED = 300;
+    this.sprite.ENEMY_SPEED = 350;
     this.sprite.TURN_SPEED = 2;
     console.log('create1');
   }
