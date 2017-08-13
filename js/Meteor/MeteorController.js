@@ -17,12 +17,8 @@ class MeteorController {
     this.sprite.anchor = new Phaser.Point(0.5, 0.5);
     this.sprite.body.setCircle(this.sprite.width/2);
     this.sprite.ROTATE_SPEED = 5;
-    // this.posx = (Nakama.player.sprite.position.x - this.sprite.position.x) / 1.5;
-    // this.posy = (Nakama.player.sprite.position.y - this.sprite.position.y) / 1.5;
-    // this.sprite.body.velocity.x = 100;
-    // this.sprite.body.velocity.y = 100;
     this.sprite.update = this.update.bind(this);
-
+    console.log('create2');
   }
 
   update() {
@@ -34,11 +30,13 @@ class MeteorController {
     // this.sprite.body.velocity.x = this.posx;
     // this.sprite.body.velocity.y = this.posy;
     this.sprite.rotation += Nakama.game.math.degToRad(this.sprite.ROTATE_SPEED);
+
     Nakama.game.physics.arcade.overlap(
       Nakama.playerGroup,
       Nakama.meteorGroup,
       this.onMeteorHitPlayer
     );
+
     Nakama.game.physics.arcade.overlap(
       Nakama.shieldGroup,
       Nakama.meteorGroup,

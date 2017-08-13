@@ -11,7 +11,7 @@ class EnemyFactory {
   }
 
   update() {
-    Nakama.game.physics.arcade.collide(Nakama.enemyGroup);
+    // Nakama.game.physics.arcade.collide(Nakama.enemyGroup);
     if (!Nakama.playerDie) {
       Nakama.gameTime += (Nakama.frame % 60 === 0);
       if (Nakama.frame % Nakama.configs.ENEMY_SPAWN_SPEED === 0) Nakama.enemyPool.addEnemy();
@@ -21,10 +21,19 @@ class EnemyFactory {
       //   Nakama.enemyFactories.push(new EnemyFactory1());
       //   Nakama.gameTime++;
       // }
-      if (Nakama.gameTime % 20 == 0) {
+      if (Nakama.gameTime % 11 == 0) {
         console.log('test');
         Nakama.meteorFactories.push(new MeteorFactory2());
         Nakama.gameTime++;
+      }
+      if (Nakama.gameTime == 20) {
+        Nakama.enemy3.sprite.reset(Nakama.game.scale.maxWidth , Nakama.game.scale.maxHeight );
+        this.bulletInterval = setInterval(function(){  Nakama.enemyBullets.push(new EnemyBullet()); }, 500);
+        Nakama.gameTime++;
+      }
+      if (Nakama.gameTime == 30) {
+        Nakama.enemy3.sprite.kill();
+        clearInterval(this.bulletInterval);
       }
       if (Nakama.gameTime % 53 == 0) {
         Nakama.enemyFactories.push(new EnemyFactory2());
@@ -38,6 +47,7 @@ class EnemyFactory {
       }
     } else {
       clearInterval(this.enemyInterval);
+      clearInterval(this.bulletInterval);
     }
   }
 
