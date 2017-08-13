@@ -18,7 +18,7 @@ class MeteorController {
     this.sprite.body.setCircle(this.sprite.width/2);
     this.sprite.ROTATE_SPEED = 5;
     this.sprite.update = this.update.bind(this);
-    console.log('create2');
+    // console.log('create2');
   }
 
   update() {

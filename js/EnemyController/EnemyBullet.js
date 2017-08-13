@@ -16,8 +16,8 @@ class EnemyBullet {
 
   update() {
     this.sprite.rotation = Nakama.enemy3.sprite.rotation;
-    this.sprite.body.velocity.x = Math.cos(Nakama.enemy3.sprite.rotation - Math.PI/2) * 800;
-    this.sprite.body.velocity.y = Math.sin(Nakama.enemy3.sprite.rotation - Math.PI/2) * 800;
+    this.sprite.body.velocity.x = Math.cos(Nakama.enemy3.sprite.rotation - Math.PI/2) * 600;
+    this.sprite.body.velocity.y = Math.sin(Nakama.enemy3.sprite.rotation - Math.PI/2) * 600;
     Nakama.game.physics.arcade.overlap(
       Nakama.enemyBulletGroup,
       Nakama.playerGroup,

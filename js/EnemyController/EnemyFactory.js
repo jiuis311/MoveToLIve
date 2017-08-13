@@ -22,19 +22,19 @@ class EnemyFactory {
       //   Nakama.gameTime++;
       // }
       if (Nakama.gameTime % 11 == 0) {
-        console.log('test');
+        // console.log('test');
         Nakama.meteorFactories.push(new MeteorFactory2());
         Nakama.gameTime++;
       }
-      if (Nakama.gameTime == 20) {
+      if (Nakama.gameTime == 30) {
         Nakama.enemy3.sprite.reset(Nakama.game.scale.maxWidth , Nakama.game.scale.maxHeight );
-        this.bulletInterval = setInterval(function(){  Nakama.enemyBullets.push(new EnemyBullet()); }, 500);
+        this.bulletInterval = setInterval(function(){  Nakama.enemyBullets.push(new EnemyBullet()); }, 600);
         Nakama.gameTime++;
       }
-      if (Nakama.gameTime == 30) {
-        Nakama.enemy3.sprite.kill();
-        clearInterval(this.bulletInterval);
-      }
+      // if (Nakama.gameTime == 40) {
+      //   Nakama.enemy3.sprite.kill();
+      //   clearInterval(this.bulletInterval);
+      // }
       if (Nakama.gameTime % 53 == 0) {
         Nakama.enemyFactories.push(new EnemyFactory2());
         Nakama.gameTime++;
@@ -47,6 +47,7 @@ class EnemyFactory {
       }
     } else {
       clearInterval(this.enemyInterval);
+      Nakama.enemy3.sprite.kill();
       clearInterval(this.bulletInterval);
     }
   }
