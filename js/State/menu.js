@@ -9,7 +9,7 @@ var menuState = {
 
     Nakama.game.load.atlasJSONHash('assets', 'Assets/assets.png', 'Assets/assets.json');
     Nakama.game.load.image('background','Assets/background2.png');
-    Nakama.game.load.image('player','Assets/spaceship.png');
+    Nakama.game.load.image('player','Assets/spaceship2.png');
     Nakama.game.load.image('button', 'Assets/playbutton.png');
     Nakama.game.load.image('gameName', 'Assets/GameName.png');
   },

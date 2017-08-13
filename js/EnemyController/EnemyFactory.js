@@ -7,7 +7,7 @@ class EnemyFactory {
     Nakama.enemyBulletPool = new EnemyBulletPool();
     this.sprite = Nakama.game.add.sprite();
     this.sprite.update = this.update.bind(this);
-    Nakama.configs.ENEMY_SPAWN_SPEED = 60;
+    Nakama.configs.ENEMY_SPAWN_SPEED = 30;
     // this.createEnemy();
   }
 

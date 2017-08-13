@@ -104,7 +104,7 @@ var playState = {
   // before camera render (mostly for debug)
   render: function(){
     // Nakama.game.debug.body(Nakama.player.sprite);
-    // Nakama.enemies.forEach((enemy) => {
+    // Nakama.tokens.forEach((enemy) => {
     //   Nakama.game.debug.body(enemy.sprite);
     // });
   },

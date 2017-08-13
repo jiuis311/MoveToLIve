@@ -15,14 +15,14 @@ var loadState = {
     Nakama.game.load.image('background','Assets/background2.png');
     Nakama.game.load.image('shield','Assets/shield.png');
     Nakama.game.load.image('shieldToken','Assets/shield2.png');
-    Nakama.game.load.image('player','Assets/spaceship.png');
+    Nakama.game.load.image('player','Assets/spaceship2.png');
     Nakama.game.load.image('enemy','Assets/EnemyType2.png');
     Nakama.game.load.image('enemy2','Assets/EnemyType1.png');
     Nakama.game.load.image('explodePlayer','Assets/explosion1.png');
     Nakama.game.load.image('meteor','Assets/meteorite1.png');
     Nakama.game.load.image('spaceBomb', 'Assets/SpaceBomb.png');
     Nakama.game.load.image('BlackHole', 'Assets/Black-Hole.png');
-    Nakama.game.load.image('BurningSun', 'Assets/BurningSun.png');
+    Nakama.game.load.image('BurningSun', 'Assets/BlueCircle.png');
     Nakama.game.load.image('SunToken', 'Assets/SunToken.png');
     Nakama.game.load.image('BulletToken', 'Assets/Target3.png');
     Nakama.game.load.image('bullet','Assets/Original Sprites/BulletType1Upgraded.png');

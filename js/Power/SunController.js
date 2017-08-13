@@ -3,7 +3,7 @@ class SunController {
     this.sprite = Nakama.sunGroup.create(x, y, 'BurningSun');
     this.sprite.anchor = new Phaser.Point(0.5, 0.5);
     Nakama.game.physics.arcade.enable(this.sprite);
-    this.sprite.body.setCircle(this.sprite.width/2 - 30);
+    this.sprite.body.setCircle(this.sprite.width/2 - 100, 100, 100);
     this.sprite.update = this.update.bind(this);
     this.sprite.ROTATE_SPEED = 1;
 
@@ -21,7 +21,7 @@ class SunController {
   }
 
   update() {
-    if (this.sprite.SET_SCALE < 1 && this.sprite.SHRINK == false) {
+    if (this.sprite.SET_SCALE < 0.7 && this.sprite.SHRINK == false) {
       this.sprite.SET_SCALE += 0.05;
       this.sprite.scale.set(this.sprite.SET_SCALE);
     }

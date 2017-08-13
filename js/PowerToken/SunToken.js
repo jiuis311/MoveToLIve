@@ -4,9 +4,9 @@ class SunToken {
     this.x = Nakama.game.rnd.integerInRange(200, Nakama.game.scale.maxWidth - 200)
     // this.y = Math.floor((Math.random() * Nakama.game.scale.maxHeight - 150) + 150);
     this.y = Nakama.game.rnd.integerInRange(200, Nakama.game.scale.maxHeight - 200)
-    this.sprite = Nakama.sunTokenGroup.create(this.x, this.y, 'SunToken');
+    this.sprite = Nakama.sunTokenGroup.create(this.x, this.y, 'BurningSun');
     Nakama.game.physics.arcade.enable(this.sprite);
-    this.sprite.body.setCircle(this.sprite.width/2 - 150);
+    this.sprite.body.setCircle((this.sprite.width / 2)*0.08, 330, 330);
     this.sprite.update = this.update.bind(this);
     this.sprite.anchor = new Phaser.Point(0.5, 0.5);
 
@@ -27,7 +27,7 @@ class SunToken {
       this.onPlayerHitToken
     );
 
-    if (this.sprite.scaleSize <= 0.25) {
+    if (this.sprite.scaleSize <= 0.08) {
       this.sprite.scaleSize += 0.025;
       this.sprite.scale.set(this.sprite.scaleSize);
     }

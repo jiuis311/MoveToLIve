@@ -23,6 +23,11 @@ class Shield {
     Nakama.game.physics.arcade.overlap(
       Nakama.enemyGroup,
       Nakama.shieldGroup,
+      this.onShieldHitEnemyBullet
+    );
+    Nakama.game.physics.arcade.overlap(
+      Nakama.enemyBulletGroup,
+      Nakama.shieldGroup,
       this.onShieldHitEnemy
     );
     if (this.sprite.SHRINK) {
@@ -41,6 +46,10 @@ class Shield {
     //score ---- bonus kill enemy
     Nakama.score += Nakama.configs.BONUS_KILL_ENEMY;
   }
+
+  onShieldHitEnemyBullet (enemyBulletSprite, shieldSprite) {
+   enemyBulletSprite.kill();
+ }
 
   killShield () {
     this.sprite.kill();

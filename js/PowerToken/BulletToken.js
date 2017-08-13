@@ -6,6 +6,8 @@ class BulletToken {
     Nakama.game.physics.arcade.enable(this.sprite);
     this.sprite.update = this.update.bind(this);
     this.sprite.anchor = new Phaser.Point(0.5, 0.5);
+    this.sprite.body.setCircle(this.sprite.width/2*0.4 , 50, 50);
+
 
     // set scale
     this.sprite.scaleSize = 0.005;

@@ -4,7 +4,8 @@ class PlayerController {
     Nakama.game.physics.arcade.enable(this.sprite);
     this.sprite.update = this.update.bind(this);
     this.sprite.body.collideWorldBounds = true;
-    this.sprite.body.setCircle(this.sprite.width/2);
+    this.sprite.scale.set(0.25);
+    this.sprite.body.setCircle(this.sprite.width/2 - 5, 105, 105);
     this.sprite.anchor = new Phaser.Point(0.5, 0.5);
     this.sprite.SHIP_SPEED = 350;
     this.sprite.TURN_SPEED = 20;
