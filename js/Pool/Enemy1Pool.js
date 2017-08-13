@@ -2,7 +2,7 @@ class Enemy1Pool {
   constructor() {
     this.pool = [];
     var tmpEnemy = {};
-    for(var i=0; i<200; i++) {
+    for(var i=0; i<50; i++) {
       tmpEnemy = new EnemyController();
       tmpEnemy.sprite.kill();
       this.pool.push(tmpEnemy.sprite);

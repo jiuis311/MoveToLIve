@@ -2,7 +2,7 @@ class MeteorPool {
   constructor() {
     this.pool = [];
     var tmpEnemy = {};
-    for(var i=0; i<20; i++) {
+    for(var i=0; i<6; i++) {
       tmpEnemy = new MeteorController();
       tmpEnemy.sprite.kill();
       this.pool.push(tmpEnemy.sprite);

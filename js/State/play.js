@@ -47,6 +47,7 @@ var playState = {
     Nakama.bullets = [];
     Nakama.enemy3 = {};
     Nakama.enemyBullets = [];
+    Nakama.enemyBulletPool = [];
 
     // create EnemyFactory
     Nakama.enemyFactories.push(new EnemyFactory());

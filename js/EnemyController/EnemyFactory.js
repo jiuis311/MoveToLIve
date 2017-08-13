@@ -4,6 +4,7 @@ class EnemyFactory {
     Nakama.gameTime = 1;
     Nakama.enemyPool = new Enemy1Pool();
     Nakama.enemy2Pool = new Enemy2Pool();
+    //Nakama.enemyBulletPool = new EnemyBulletPool();
     this.sprite = Nakama.game.add.sprite();
     this.sprite.update = this.update.bind(this);
     Nakama.configs.ENEMY_SPAWN_SPEED = 30;
@@ -28,7 +29,7 @@ class EnemyFactory {
       }
       if (Nakama.gameTime == 30) {
         Nakama.enemy3.sprite.reset(Nakama.game.scale.maxWidth , Nakama.game.scale.maxHeight );
-        this.bulletInterval = setInterval(function(){  Nakama.enemyBullets.push(new EnemyBullet()); }, 600);
+        this.bulletInterval = setInterval(function(){  Nakama.enemyBullets.push(new EnemyBullet()) }, 800);
         Nakama.gameTime++;
       }
       // if (Nakama.gameTime == 40) {
