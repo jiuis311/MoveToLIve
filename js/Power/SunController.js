@@ -39,6 +39,12 @@ class SunController {
       Nakama.sunGroup,
       this.onSunHitEnemy
     );
+
+    Nakama.game.physics.arcade.overlap(
+      Nakama.enemy3Group,
+      Nakama.sunGroup,
+      this.onSunHitEnemy3
+    );
   }
 
   killSprite () {
@@ -57,4 +63,13 @@ class SunController {
    //score ---- bonus kill enemy
    Nakama.score += Nakama.configs.BONUS_KILL_ENEMY;
  }
+
+ onBSuntHitEnemy3 (enemy3Sprite, sunSprite) {
+  Nakama.explosions.push(new Explode(enemy3Sprite.position.x, enemy3Sprite.position.y));
+  enemy3Sprite.kill();
+  Nakama.explosionSound.push(new ExplodeSound('playerExplodeSound', 0.4));
+  //score ---- bonus kill enemy
+  Nakama.score += Nakama.configs.BONUS_KILL_ENEMY*3;
+  clearInterval(Nakama.enemyFactory.bulletInterval);
+}
 }

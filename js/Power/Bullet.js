@@ -54,7 +54,7 @@ class Bullet {
    clearInterval(Nakama.enemyFactory.bulletInterval);
  }
 
-  killBullet () {
-    this.sprite.kill();
-  }
+  // killBullet () {
+  //   this.sprite.kill();
+  // }
 }

@@ -51,18 +51,15 @@ class BulletToken {
    tokenSprite.kill();
    Nakama.playerShooting = true;
    Nakama.bulletPool = new BulletPool();
-   function fire(n) {
-     for(let i  = n; i >= 0; i--){
-       setTimeout(function () {
-         if(!Nakama.playerShooting) {
-           n = 0;
-           return;
-         }
-         Nakama.bulletPool.addBullet();
-       },(n- i) * 300);
+   fire(40);
+
+     function fire(n){
+       Nakama.bulletPool.addBullet();
+       if (!Nakama.playerShooting) n = 0;
+       if (n > 0){
+         setTimeout(function(){ fire(n - 1)}, 300);
+       }
      }
-   }
-    fire(40);
  }
 
  killSprite () {

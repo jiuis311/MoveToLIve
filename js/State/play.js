@@ -37,6 +37,7 @@ var playState = {
     Nakama.shield = {};
     Nakama.enemies = [];
     Nakama.enemyFactory = {};
+    Nakama.enemyFactories = [];
     Nakama.meteorFactories = [];
     Nakama.enemyPool = {};
     Nakama.enemy2Pool = {};

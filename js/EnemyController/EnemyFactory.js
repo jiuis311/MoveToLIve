@@ -22,7 +22,7 @@ class EnemyFactory {
       //   Nakama.enemyFactories.push(new EnemyFactory1());
       //   Nakama.gameTime++;
       // }
-      if (Nakama.gameTime % 11 == 0) {
+      if (Nakama.gameTime % 16 == 0) {
         // console.log('test');
         Nakama.meteorFactories.push(new MeteorFactory2());
         Nakama.gameTime++;
