@@ -50,6 +50,7 @@ class MeteorController {
     Nakama.explodePlayer = new Explode(playerSprite.position.x, playerSprite.position.y, 'explodePlayer');
     Nakama.explosions.push(new Explode(playerSprite.position.x, playerSprite.position.y));
     playerSprite.kill();
+    Nakama.playerShooting = false;
     Nakama.explosionSound.push(new ExplodeSound('playerExplodeSound', 0.4));
 
     //scorring -- Define death

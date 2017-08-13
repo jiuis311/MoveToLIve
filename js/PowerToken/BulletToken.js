@@ -48,18 +48,20 @@ class BulletToken {
   }
 
   onPlayerHitToken (playerSprite, tokenSprite) {
-  // console.log(this.sprite.FIRE);
    tokenSprite.kill();
-  //  this.sprite.FIRE = true;
-   function fire(n){
-     for(var i  = n; i >= 0; i--){
-         setTimeout(function () {
-           Nakama.bullets.push(new Bullet(0));
-           n--;
-         }, i*300);
-       }
+   Nakama.playerShooting = true;
+   function fire(n) {
+     for(let i  = n; i >= 0; i--){
+       setTimeout(function () {
+         if(!Nakama.playerShooting) {
+           n = 0;
+           return;
+         }
+         Nakama.bullets.push(new Bullet(0));
+       },(n- i) * 300);
+     }
    }
-   fire(40);
+    fire(40);
  }
 
  killSprite () {

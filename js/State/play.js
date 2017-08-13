@@ -24,6 +24,7 @@ var playState = {
     Nakama.frame = 0;
     Nakama.displayingText = Nakama.game.add.text( 10, 10, "Score: " + Nakama.score, Nakama.style);
     Nakama.playerDie = false;
+    Nakama.playerShooting = false;
 
     //create token
     Nakama.tokens = [];

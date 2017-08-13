@@ -14,7 +14,7 @@ class EnemyController {
     this.sprite.body.setCircle(this.sprite.width/2);
     this.sprite.update = this.update.bind(this);
     this.sprite.anchor = new Phaser.Point(0.5, 0.5);
-    this.sprite.ENEMY_SPEED = 100;
+    this.sprite.ENEMY_SPEED = 300;
     this.sprite.TURN_SPEED = 2;
     console.log('create1');
   }
@@ -64,6 +64,7 @@ class EnemyController {
     Nakama.explodePlayer = new Explode(playerSprite.position.x, playerSprite.position.y, 'explodePlayer');
     Nakama.explosions.push(new Explode(playerSprite.position.x, playerSprite.position.y));
     playerSprite.kill();
+    Nakama.playerShooting = false;
     Nakama.explosionSound.push(new ExplodeSound('playerExplodeSound', 0.4));
 
     //scorring -- Define death

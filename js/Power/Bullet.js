@@ -5,7 +5,7 @@ class Bullet {
     this.sprite.update = this.update.bind(this);
     this.sprite.anchor = new Phaser.Point(0.5, 0.5);
     this.configs = {
-      SPEED : 700,
+      SPEED : 1000,
       ANGLE : angle,
       TARGETANGLE: 0
     };

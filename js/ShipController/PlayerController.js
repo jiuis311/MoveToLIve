@@ -6,7 +6,7 @@ class PlayerController {
     this.sprite.body.collideWorldBounds = true;
     this.sprite.body.setCircle(this.sprite.width/2);
     this.sprite.anchor = new Phaser.Point(0.5, 0.5);
-    this.sprite.SHIP_SPEED = 300;
+    this.sprite.SHIP_SPEED = 350;
     this.sprite.TURN_SPEED = 20;
   }
 
@@ -19,7 +19,7 @@ class PlayerController {
     ) {
       this.sprite.SHIP_SPEED = 200;
     } else {
-      this.sprite.SHIP_SPEED = 300;
+      this.sprite.SHIP_SPEED = 350;
     }
 
     if (this.sprite.position.x + 30 > Nakama.game.input.activePointer.x
@@ -29,7 +29,7 @@ class PlayerController {
     ) {
       this.sprite.SHIP_SPEED = 100;
     } else {
-      this.sprite.SHIP_SPEED = 300;
+      this.sprite.SHIP_SPEED = 350;
     }
 
     if (this.sprite.position.x + 300 < Nakama.game.input.activePointer.x
@@ -37,9 +37,9 @@ class PlayerController {
       || this.sprite.position.y + 300 < Nakama.game.input.activePointer.y
       || this.sprite.position.y - 300 > Nakama.game.input.activePointer.y
     ) {
-      this.sprite.SHIP_SPEED = 400;
+      this.sprite.SHIP_SPEED = 450;
     } else {
-      this.sprite.SHIP_SPEED = 300;
+      this.sprite.SHIP_SPEED = 350;
     }
 
     if (this.sprite.position.x + this.sprite.width/2 > Nakama.game.input.activePointer.x
