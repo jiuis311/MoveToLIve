@@ -22,8 +22,8 @@ class MeteorPool {
     for(var i = 0; i < this.pool.length; i++) {
       if (!this.pool[i].alive) {
         this.pool[i].reset(this.x, this.y);
-        this.pool[i].body.velocity.x = (Nakama.player.sprite.position.x - this.pool[i].x);
-        this.pool[i].body.velocity.y = (Nakama.player.sprite.position.y - this.pool[i].y);
+        this.pool[i].body.velocity.x = (Nakama.player.sprite.position.x - this.pool[i].x)/1.2;
+        this.pool[i].body.velocity.y = (Nakama.player.sprite.position.y - this.pool[i].y)/1.2;
         this.timerMeteorKill = Nakama.game.time.events;
         this.timerMeteorKill.repeat(7000, 1, function() {this.pool[i].kill();}, this);
         break;

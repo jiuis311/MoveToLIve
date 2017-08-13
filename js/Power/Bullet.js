@@ -1,27 +1,25 @@
 class Bullet {
-  constructor(angle) {
-    this.sprite = Nakama.bulletGroup.create(Nakama.player.sprite.position.x, Nakama.player.sprite.position.y, 'bullet');
+  constructor() {
+    this.sprite = Nakama.bulletGroup.create(0, 0, 'bullet');
     Nakama.game.physics.arcade.enable(this.sprite);
     this.sprite.update = this.update.bind(this);
     this.sprite.anchor = new Phaser.Point(0.5, 0.5);
-    this.configs = {
-      SPEED : 1000,
-      ANGLE : angle,
-      TARGETANGLE: 0
-    };
-    //kill Bullet
-    this.timerBulletKill = Nakama.game.time.events;
-    this.timerBulletKill.repeat(10000, 1, this.killBullet, this);
-    this.configs.TARGETANGLE = Nakama.game.math.angleBetween(
-      Nakama.player.sprite.position.x,
-      Nakama.player.sprite.position.y,
-      Nakama.game.input.activePointer.x,
-      Nakama.game.input.activePointer.y
-    );
-    this.sprite.rotation = this.configs.ANGLE+this.configs.TARGETANGLE + Math.PI/2;
+    this.sprite.outOfBoundsKill = true;
 
-    this.sprite.body.velocity.x = Math.cos(this.sprite.rotation - Math.PI/2) * this.configs.SPEED;
-    this.sprite.body.velocity.y = Math.sin(this.sprite.rotation - Math.PI/2) * this.configs.SPEED;
+
+    //kill Bullet
+    // this.timerBulletKill = Nakama.game.time.events;
+    // this.timerBulletKill.repeat(10000, 1, this.killBullet, this);
+    // this.configs.TARGETANGLE = Nakama.game.math.angleBetween(
+    //   Nakama.player.sprite.position.x,
+    //   Nakama.player.sprite.position.y,
+    //   Nakama.game.input.activePointer.x,
+    //   Nakama.game.input.activePointer.y
+    // );
+    // this.sprite.rotation = this.configs.TARGETANGLE + Math.PI/2;
+    //
+    // this.sprite.body.velocity.x = Math.cos(this.sprite.rotation - Math.PI/2) * 1000;
+    // this.sprite.body.velocity.y = Math.sin(this.sprite.rotation - Math.PI/2) * 1000;
   }
 
   update() {

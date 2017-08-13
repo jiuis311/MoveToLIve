@@ -50,6 +50,7 @@ class BulletToken {
   onPlayerHitToken (playerSprite, tokenSprite) {
    tokenSprite.kill();
    Nakama.playerShooting = true;
+   Nakama.bulletPool = new BulletPool();
    function fire(n) {
      for(let i  = n; i >= 0; i--){
        setTimeout(function () {
@@ -57,7 +58,7 @@ class BulletToken {
            n = 0;
            return;
          }
-         Nakama.bullets.push(new Bullet(0));
+         Nakama.bulletPool.addBullet();
        },(n- i) * 300);
      }
    }
