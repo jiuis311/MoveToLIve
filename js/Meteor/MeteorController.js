@@ -17,15 +17,22 @@ class MeteorController {
     this.sprite.anchor = new Phaser.Point(0.5, 0.5);
     this.sprite.body.setCircle(this.sprite.width/2);
     this.sprite.ROTATE_SPEED = 5;
-    this.sprite.body.velocity.x = (Nakama.player.sprite.position.x - this.x) / 1.5;
-    this.sprite.body.velocity.y = (Nakama.player.sprite.position.y - this.y) / 1.5;
+    // this.posx = (Nakama.player.sprite.position.x - this.sprite.position.x) / 1.5;
+    // this.posy = (Nakama.player.sprite.position.y - this.sprite.position.y) / 1.5;
+    // this.sprite.body.velocity.x = 100;
+    // this.sprite.body.velocity.y = 100;
     this.sprite.update = this.update.bind(this);
 
-    this.timerMeteorKill = Nakama.game.time.events;
-    this.timerMeteorKill.repeat(7000, 1, this.killMeteor, this);
   }
 
   update() {
+    // if (this.DIRECTION == true) {
+    //   this.sprite.body.velocity.x = (Nakama.player.sprite.position.x - this.x) / 1.5;
+    //   this.sprite.body.velocity.y = (Nakama.player.sprite.position.y - this.y) / 1.5;
+    //   this.DIRECTION = false;
+    // }
+    // this.sprite.body.velocity.x = this.posx;
+    // this.sprite.body.velocity.y = this.posy;
     this.sprite.rotation += Nakama.game.math.degToRad(this.sprite.ROTATE_SPEED);
     Nakama.game.physics.arcade.overlap(
       Nakama.playerGroup,
@@ -51,9 +58,5 @@ class MeteorController {
 
   onMeteorHitShield (shieldSprite, meteorSprite) {
    shieldSprite.kill();
-}
-
-    killMeteor () {
-    this.sprite.kill();
-  }
+ }
 }

@@ -7,7 +7,7 @@ class PlayerController {
     this.sprite.body.setCircle(this.sprite.width/2);
     this.sprite.anchor = new Phaser.Point(0.5, 0.5);
     this.sprite.SHIP_SPEED = 300;
-    this.sprite.TURN_SPEED = 10;
+    this.sprite.TURN_SPEED = 20;
   }
 
   update() {

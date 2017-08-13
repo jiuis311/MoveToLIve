@@ -29,14 +29,15 @@ var playState = {
     Nakama.tokens = [];
     Nakama.tokenController = new TokenController();
 
-    //create Meteor
-    Nakama.meteorFactory = new MeteorFactory();
-
     // create player
     Nakama.player = new PlayerController();
     Nakama.shield = {};
     Nakama.enemies = [];
     Nakama.enemyFactories = [];
+    Nakama.meteorFactories = [];
+    Nakama.enemyPool = {};
+    Nakama.enemy2Pool = {};
+    Nakama.meteorPool = {};
     Nakama.explosions = [];
     Nakama.meteors = [];
     Nakama.suns = [];
@@ -44,6 +45,10 @@ var playState = {
 
     // create EnemyFactory
     Nakama.enemyFactories.push(new EnemyFactory());
+    Nakama.meteorFactories.push(new MeteorFactory());
+
+    // Nakama.enemyPool = new Enemy1Pool();
+    // Nakama.enemyPool.addEnemy();
 
 
     //tester
@@ -60,6 +65,7 @@ var playState = {
 
   // update game state each frame
   update: function(){
+    //Nakama.bullets.push(new Bullet(0));
     //scorring
     //console.log(Nakama.gameTime);
     if(!Nakama.playerDie){

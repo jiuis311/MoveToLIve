@@ -16,6 +16,11 @@ class BulletToken {
     //kill Sun
     this.timerSprite = Nakama.game.time.events;
     this.timerSprite.repeat(25000, 1, this.killSprite, this);
+
+    //bullet count
+    this.sprite.BULLET_MAX = 40;
+    this.sprite.BULLET_COUNT = 0;
+    this.sprite.FIRE = false;
   }
 
   update() {
@@ -29,10 +34,23 @@ class BulletToken {
       this.sprite.scale.set(this.sprite.scaleSize);
     }
     this.sprite.rotation += Nakama.game.math.degToRad(this.sprite.ROTATE_SPEED);
+    // if (this.sprite.FIRE) {
+    //   // this.createBullet();
+    //   Nakama.bullets.push(new Bullet(0));
+    //   this.sprite.BULLET_COUNT++;
+    //   // this.FIRE = false;
+    // }
+    //
+    // if (this.sprite.BULLET_COUNT > this.sprite.BULLET_MAX || Nakama.playerDie) {
+    //   // this.FIRE = false;
+    //   clearInterval(this.bulletInterval);
+    // }
   }
 
   onPlayerHitToken (playerSprite, tokenSprite) {
+  // console.log(this.sprite.FIRE);
    tokenSprite.kill();
+  //  this.sprite.FIRE = true;
    function fire(n){
      for(var i  = n; i >= 0; i--){
          setTimeout(function () {
@@ -47,4 +65,8 @@ class BulletToken {
  killSprite () {
    this.sprite.kill();
  }
+
+ // createBullet() {
+ //   this.bulletInterval = setInterval(function(){ Nakama.bullets.push(new Bullet(0)); }, 300);
+ // }
 }
