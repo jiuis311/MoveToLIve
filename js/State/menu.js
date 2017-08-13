@@ -11,7 +11,7 @@ var menuState = {
     Nakama.game.load.image('background','Assets/background2.png');
     Nakama.game.load.image('player','Assets/spaceship2.png');
     Nakama.game.load.image('button', 'Assets/playbutton.png');
-    Nakama.game.load.image('gameName', 'Assets/GameName.png');
+    Nakama.game.load.image('gameName', 'Assets/namegame1.png');
   },
   create: function(){
     Nakama.game.add.sprite(0, 0, 'background');
