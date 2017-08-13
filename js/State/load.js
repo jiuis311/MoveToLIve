@@ -28,6 +28,7 @@ var loadState = {
     Nakama.game.load.image('bullet','Assets/Original Sprites/BulletType1Upgraded.png');
     Nakama.game.load.image('EnemyShip' , 'Assets/Spaceship3Right-Partner.png');
     Nakama.game.load.image('EnemyBullet', 'Assets/EnemyBulletType3Origin.png');
+    Nakama.game.load.image('meteorWarning', 'Assets/warningsprite.png');
 
     //exlode animation preload
     Nakama.game.load.spritesheet('kaboom', 'Assets/Explode.png', 128, 128);

@@ -19,6 +19,7 @@ var playState = {
     Nakama.enemyGroup = Nakama.game.add.physicsGroup();
     Nakama.playerGroup = Nakama.game.add.physicsGroup();
     Nakama.meteorGroup = Nakama.game.add.physicsGroup();
+    Nakama.warningGroup = Nakama.game.add.physicsGroup();
 
     //Scorring
     Nakama.style = { font: "30px Arial", fill: "white", boundsAlignH: "center", boundsAlignV: "middle" };

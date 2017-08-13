@@ -2,6 +2,7 @@ class EnemyBullet {
   constructor() {
     this.sprite = Nakama.enemyBulletGroup.create(0, 0, 'EnemyBullet');
     Nakama.game.physics.arcade.enable(this.sprite);
+    this.sprite.checkWorldBounds = true;
     this.sprite.outOfBoundsKill = true;
     this.sprite.update = this.update.bind(this);
     this.sprite.anchor = new Phaser.Point(0.5, 0.5);
