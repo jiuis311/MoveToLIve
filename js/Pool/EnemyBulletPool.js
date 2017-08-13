@@ -9,7 +9,7 @@ class EnemyBulletPool {
     }
   }
 
-  addBullet() {
+  addEnemyBullet() {
     for(var i = 0; i < this.pool.length; i++) {
       if (!this.pool[i].alive) {
         this.pool[i].reset(Nakama.enemy3.sprite.position.x, Nakama.enemy3.sprite.position.y);

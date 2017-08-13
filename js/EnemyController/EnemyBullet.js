@@ -1,15 +1,15 @@
 class EnemyBullet {
   constructor() {
-    this.sprite = Nakama.enemyBulletGroup.create(Nakama.enemy3.sprite.position.x, Nakama.enemy3.sprite.position.y, 'EnemyBullet');
+    this.sprite = Nakama.enemyBulletGroup.create(0, 0, 'EnemyBullet');
     Nakama.game.physics.arcade.enable(this.sprite);
     this.sprite.outOfBoundsKill = true;
     this.sprite.update = this.update.bind(this);
     this.sprite.anchor = new Phaser.Point(0.5, 0.5);
 
-    //kill Bullet
-    this.sprite.rotation = Nakama.enemy3.sprite.rotation;
-    this.sprite.body.velocity.x = Math.cos(Nakama.enemy3.sprite.rotation - Math.PI/2) * 600;
-    this.sprite.body.velocity.y = Math.sin(Nakama.enemy3.sprite.rotation - Math.PI/2) * 600;
+    // //kill Bullet
+    // this.sprite.rotation = Nakama.enemy3.sprite.rotation;
+    // this.sprite.body.velocity.x = Math.cos(Nakama.enemy3.sprite.rotation - Math.PI/2) * 600;
+    // this.sprite.body.velocity.y = Math.sin(Nakama.enemy3.sprite.rotation - Math.PI/2) * 600;
   }
 
   update() {
