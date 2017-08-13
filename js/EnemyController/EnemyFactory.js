@@ -7,7 +7,7 @@ class EnemyFactory {
     Nakama.enemyBulletPool = new EnemyBulletPool();
     this.sprite = Nakama.game.add.sprite();
     this.sprite.update = this.update.bind(this);
-    Nakama.configs.ENEMY_SPAWN_SPEED = 30;
+    Nakama.configs.ENEMY_SPAWN_SPEED = 60;
     // this.createEnemy();
   }
 
@@ -27,7 +27,7 @@ class EnemyFactory {
         Nakama.meteorFactories.push(new MeteorFactory2());
         Nakama.gameTime++;
       }
-      if (Nakama.gameTime == 30) {
+      if (Nakama.gameTime % 20 == 0 && !Nakama.enemy3.sprite.alive) {
         Nakama.enemy3.sprite.reset(Nakama.game.scale.maxWidth , Nakama.game.scale.maxHeight );
         this.bulletInterval = setInterval(function(){  Nakama.enemyBulletPool.addEnemyBullet(); }, 800);
         Nakama.gameTime++;
@@ -41,10 +41,10 @@ class EnemyFactory {
         Nakama.gameTime++;
       }
       if (Nakama.gameTime == 30) {
-        Nakama.configs.ENEMY_SPAWN_SPEED = 15;
+        Nakama.configs.ENEMY_SPAWN_SPEED = 30;
       }
       if (Nakama.gameTime == 60) {
-        Nakama.configs.ENEMY_SPAWN_SPEED = 12;
+        Nakama.configs.ENEMY_SPAWN_SPEED = 15;
       }
     } else {
       clearInterval(this.enemyInterval);

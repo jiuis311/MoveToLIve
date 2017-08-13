@@ -30,6 +30,11 @@ class Bullet {
       Nakama.bulletGroup,
       this.onBulletHitEnemy
     );
+    Nakama.game.physics.arcade.overlap(
+      Nakama.enemy3Group,
+      Nakama.bulletGroup,
+      this.onBulletHitEnemy3
+    );
   }
 
    onBulletHitEnemy (enemySprite, BulletSprite) {
@@ -39,6 +44,15 @@ class Bullet {
     //score ---- bonus kill enemy
     Nakama.score += Nakama.configs.BONUS_KILL_ENEMY;
   }
+
+  onBulletHitEnemy3 (enemy3Sprite, BulletSprite) {
+   Nakama.explosions.push(new Explode(enemy3Sprite.position.x, enemy3Sprite.position.y));
+   enemy3Sprite.kill();
+   Nakama.explosionSound.push(new ExplodeSound('playerExplodeSound', 0.4));
+   //score ---- bonus kill enemy
+   Nakama.score += Nakama.configs.BONUS_KILL_ENEMY*3;
+   clearInterval(Nakama.enemyFactory.bulletInterval);
+ }
 
   killBullet () {
     this.sprite.kill();

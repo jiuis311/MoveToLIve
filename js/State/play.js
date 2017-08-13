@@ -36,7 +36,7 @@ var playState = {
     Nakama.player = new PlayerController();
     Nakama.shield = {};
     Nakama.enemies = [];
-    Nakama.enemyFactories = [];
+    Nakama.enemyFactory = {};
     Nakama.meteorFactories = [];
     Nakama.enemyPool = {};
     Nakama.enemy2Pool = {};
@@ -51,7 +51,7 @@ var playState = {
     Nakama.bulletPool = {};
 
     // create EnemyFactory
-    Nakama.enemyFactories.push(new EnemyFactory());
+    Nakama.enemyFactory = new EnemyFactory();
     Nakama.meteorFactories.push(new MeteorFactory());
 
     //
